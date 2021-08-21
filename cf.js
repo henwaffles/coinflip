@@ -27,24 +27,42 @@ rl.on('line', function(line) {
     rulet = Math.random() <= 0.5 ? 'kırmızı' : 'siyah';
 
     if(line.trim() === text) {
-        console.log('Doğru Tahmin! +' +işlem+ ' para kazandın');
-        para = para + işlem;
+        console.log('Para: ' + para)
+        console.log('Para dönüyor...')
+        setTimeout(function(){
+            console.log('Doğru Tahmin! +' +işlem+ ' para kazandın');
+            para = para + işlem;
+            console.log('Yeni Para: ' + para)
+        
+        
+        },3000)
+        
     }
 
     else if(line.trim() === 'para') {
+        console.log('Para: ' + para)
         console.log(para + ' ' + 'paran var.')
     }
-    else if(line.trim() === 'kırmızı' && line.trim() === 'siyah' ) {
+    else if(para <= 0) {
+        console.log('Paran Kalmadı.');
+         process.exit(0);
     }
 
     else {
-        console.log('Yanlış Tahmin! -' +(işlem+işlem)+ ' para kaybettin');
-        para = para - işlem+işlem;
+        console.log('Para: ' + para)
+        console.log('Para dönüyor...')
+        setTimeout(function(){
+            console.log('Yanlış Tahmin -' +(işlem+işlem)+ ' para kaybettin');
+            para = para - (işlem+işlem);
+        console.log('Yeni Para: ' + para)
+        },3000)
+        
+        
     }
     
     
     
-     console.log('Para: ' + para)
+     
 
      if(para <= 0) {
          console.log('Paran Kalmadı.');
